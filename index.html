@@ -3,343 +3,1197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <title>Jacobo Tello - ePortfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #e9ecef;
+            padding: 20px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #6c757d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .header-text h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a365d;
+        }
+
+        .header-text p {
+            font-size: 20px;
+            color: #6c757d;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .nav-btn:hover {
+            background-color: #1a365d;
+        }
+
+        .nav-btn.active {
+            background-color: #1a365d;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 0;
+            min-height: 600px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* About Me Section */
+        .profile-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .profile-photo {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #1a365d;
+        }
+
+        .profile-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .profile-title {
+            font-size: 64px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 50px;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 64px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-content p {
+            font-size: 26px;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* PROJECT NAVIGATION - Modern Tab Style like SpineArt.com */
+        .project-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            border-bottom: 3px solid #e9ecef;
+        }
+
+        .project-nav-btn {
+            padding: 20px 30px;
+            background: transparent;
+            color: #6c757d;
+            border: none;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            flex: 1;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px;
+        }
+
+        .project-nav-btn:hover {
+            color: #1a365d;
+            border-bottom-color: #6c757d;
+        }
+
+        .project-nav-btn.active {
+            color: #1a365d;
+            border-bottom-color: #1a365d;
+            font-weight: 700;
+        }
+
+        /* Individual Project Pages - Two Column Layout */
+        .project-detail {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .project-header h1 {
+            font-size: 60px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 18px 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            background-color: #1a365d;
+        }
+
+        .project-content {
+            background-color: white;
+            border-radius: 15px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .project-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .project-text {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-text ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .project-text li {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #555;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .project-text h3 {
+            font-size: 32px;
+            color: #1a365d;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .project-image-main {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            flex-direction: column;
+        }
+
+        .project-image-main img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            margin-top: 15px;
+            color: #6c757d;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .additional-images {
+            grid-column: 1 / 3;
+            padding: 50px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .additional-images h4 {
+            font-size: 28px;
+            color: #1a365d;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-image {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-image-caption {
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-size: 18px;
+            color: #6c757d;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* PDF Button Style - More Prominent */
+        .pdf-button {
+            display: inline-block;
+            padding: 25px 50px;
+            background: linear-gradient(135deg, #1a365d, #2c5aa0);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(26, 54, 93, 0.3);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pdf-button:hover {
+            background: linear-gradient(135deg, #2c5aa0, #1a365d);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(26, 54, 93, 0.4);
+        }
+
+        .pdf-button:active {
+            transform: translateY(0);
+        }
+
+        /* Embedded PDF Viewer */
+        .embedded-pdf {
+            width: 100%;
+            height: 850px;
+            border: 3px solid #e9ecef;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Research PDF specific sizing - wider for single page display */
+        .research-pdf {
+            width: 100%;
+            height: 700px;
+            margin: 20px auto;
+            max-width: 1100px;
+        }
+
+        /* Zoom out large layout image */
+        .large-layout-image {
+            max-width: 85%;
+            height: auto;
+        }
+
+        /* Wide Image Full Width Style */
+        .wide-image-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+
+        .wide-image-section img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .wide-image-caption {
+            margin-top: 20px;
+            color: #6c757d;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* PDF Viewer Modal */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .pdf-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdf-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 98%;
+            max-height: 98%;
+            width: 95vw;
+            height: 95vh;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+        }
+
+        .pdf-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: #1a365d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 1001;
+        }
+
+        .pdf-close:hover {
+            background: #2c5aa0;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: calc(95vh - 120px);
+            border: none;
+            border-radius: 8px;
+        }
+
+        .pdf-title {
+            margin-bottom: 20px;
+            color: #1a365d;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #e9ecef;
+            padding: 40px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .contact-info h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            color: #6c757d;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .social-link {
+            color: #1a365d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .profile-photo {
+                width: 280px;
+                height: 280px;
+            }
+
+            .profile-title, .section-title {
+                font-size: 42px;
+            }
+
+            .project-content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image-main {
+                order: -1;
+                min-height: 300px;
+            }
+
+            .additional-images {
+                grid-column: 1;
+            }
+
+            .project-images {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .project-text {
+                padding: 30px;
+            }
+
+            .project-nav {
+                flex-direction: column;
+                border-bottom: none;
+                max-width: 400px;
+            }
+
+            .project-nav-btn {
+                border-bottom: 1px solid #e9ecef;
+                padding: 15px 20px;
+                margin-bottom: 0;
+            }
+
+            .project-nav-btn:last-child {
+                border-bottom: none;
+            }
+
+            .project-nav-btn.active {
+                background: #1a365d;
+                color: white;
+            }
+
+            .embedded-pdf {
+                height: 800px;
+            }
+
+            .research-pdf {
+                height: 600px;
+                width: 95%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-inner"></div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">JT</div>
+                    <div class="header-text">
+                        <h1>Jacobo Tello</h1>
+                        <p>Electrical Engineering Student @ Johns Hopkins University</p>
+                    </div>
+                </div>
+                <nav class="nav-buttons">
+                    <button class="nav-btn active" onclick="showSection('about')">About Me</button>
+                    <button class="nav-btn" onclick="showSection('research')">Research</button>
+                    <button class="nav-btn" onclick="showSection('projects')">Projects</button>
+                    <button class="nav-btn" onclick="showSection('contact')">Contact Me</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- About Me Section -->
+            <div id="about" class="content-section active">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="jacoboPortrait.png">
+                    </div>
+                    <div class="profile-content">
+                        <h1 class="profile-title">Jacobo Tello</h1>
+                        <div class="about-section">
+                            <h2>A Bit About Me</h2>
+                            <p class="about-text">
+                                My name is Jacobo Tello. I am currently a junior studying Electrical Engineering at Johns Hopkins University. I am interested in hardware, embedded systems, and robotics. This virtual portfolio showcases all of my projects and research during my time at Hopkins.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Section -->
+            <div id="research" class="content-section">
+                <h1 class="section-title">Research</h1>
+                <div class="section-content">
+                    <div class="project-detail">
+                        <div class="project-content">
+                            <!-- PASlong.png is 4.32 ratio - extremely wide, display full width at top -->
+                            <div class="wide-image-section">
+                                <img src="PASlong.png" alt="PAS Algorithm Visualization">
+                                <div class="wide-image-caption">Probability-based Adaptive Sampling (PAS) Algorithm Implementation</div>
+                            </div>
+                            
+                            <div class="project-content-grid">
+                                <div class="project-text">
+                                    <h2 style="color: #1a365d; margin-bottom: 30px; font-size: 42px;">Tactile Sensing Paper (Under Review) </h2>
+                                    <ul>
+                                        <li>Research focuses on tactile sensing, specifically on increasing the speed of non-parallelized sensing grids by implementing a new algorithm called Probability-based Adaptive Sampling (PAS). The principle behind PAS is to smartly sample fewer pixels per frame and rather sample pixels near regions of high pressure.</li>
+                                        <li>The algorithm maps each pixel in the grid to a probability, and increases that probability if that pixel is near a region of recurrent high pressure. Unsampled pixels are then reconstructed using a sampling dictionary to produce the final tactile image with enhanced accuracy and reduced computational overhead.</li>
+                                    </ul>
+                                </div>
+                                <div class="project-image-main">
+                                    <div style="text-align: center;">
+                                        <!-- Embedded PDF Viewer -->
+                                        <div style="margin-bottom: 30px;">
+                                            <h4 style="color: #1a365d; margin-bottom: 15px; font-size: 22px;">Research Paper Preview</h4>
+                                            <iframe src="ArikPaper.pdf" class="embedded-pdf research-pdf" title="Research Paper"></iframe>
+                                        </div>
+                                        <button onclick="openPDF('ArikPaper.pdf', 'Research Paper')" class="pdf-button">📄 Read Full Research Paper</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Me Section -->
+            <div id="contact" class="content-section">
+                <h1 class="section-title">Contact Me</h1>
+                <div class="section-content">
+                    <p>Thanks for sticking around! Feel free to reach out using any of the links below.</p>
+                    <div style="text-align: center; margin-top: 50px;">
+                        <p style="font-size: 26px; margin-bottom: 20px; font-weight: 600;"><strong>Email:</strong> jacobotellop@gmail.com</p>
+                        <p style="font-size: 26px; margin-bottom: 20px; font-weight: 600;"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/jacobo-tello-54181b2a7" class="social-link">linkedin.com/in/jacobo-tello-54181b2a7</a></p>
+                        <p style="font-size: 26px; margin-bottom: 40px; font-weight: 600;"><strong>GitHub:</strong> <a href="https://github.com/jacobotellop" class="social-link">github.com/jacobotellop</a></p>
+                        
+                        <!-- CV Download Section -->
+                        <div style="margin-top: 60px; padding-top: 40px; border-top: 2px solid #e9ecef;">
+                            <p style="font-size: 26px; margin-bottom: 30px; font-weight: 600;"><strong>Download Resume:</strong></p>
+                            <a href="resumeJacoboTello2025.pdf" class="pdf-button" style="font-size: 20px; padding: 20px 40px;">📄 Download CV/Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Overview - Two Column Layout -->
+            <div id="projects" class="content-section">
+                <!-- Modern Tab Navigation -->
+                <div class="project-nav">
+                    <div class="project-nav-btn" onclick="showProject('cmos')">CMOS Imager</div>
+                    <div class="project-nav-btn" onclick="showProject('sonar')">Sonar Ranging</div>
+                    <div class="project-nav-btn" onclick="showProject('hbridge')">H-Bridge Driver</div>
+                    <div class="project-nav-btn" onclick="showProject('dtmf')">DTMF Processing</div>
+                    <div class="project-nav-btn" onclick="showProject('cpp')">C/C++ Projects</div>
+                    <div class="project-nav-btn" onclick="showProject('ecg')">ECG Circuit</div>
+                </div>
+
+                <!-- Projects Overview Content - Two Column Layout -->
+                <div class="project-detail">
+                    <div class="project-content">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <h2 style="color: #1a365d; margin-bottom: 30px; font-size: 48px;">Projects Portfolio</h2>
+                                <p style="font-size: 22px; margin-bottom: 20px; text-align: left; font-weight: 600;">Check out my different projects, all from clubs to coursework to DIY ideas!</p>
+                                <ul>
+                                    <li><strong>CMOS Imager:</strong> 24x24 pixel sensor array designed in Cadence Virtuoso with complete 3T APS implementation and advanced timing control systems.</li>
+                                    <li><strong>Sonar Ranging System:</strong> Precision ultrasonic distance measurement using 40kHz transducers and PID control with dynamic gain adjustment capabilities.</li>
+                                    <li><strong>H-Bridge Driver:</strong> High-performance 20kHz motor control PCB handling 5A loads with comprehensive thermal management and protection features.</li>
+                                    <li><strong>DTMF Processing:</strong> MATLAB signal processing system for encoding/decoding telephone tones with advanced noise filtering and frequency analysis.</li>
+                                    <li><strong>C/C++ Projects:</strong> Image manipulation software and complete chess game engine with full rule compliance and terminal-based interface.</li>
+                                    <li><strong>ECG Circuit:</strong> 4-stage biomedical signal processing for real-time heart monitoring with advanced filtering and amplification stages.</li>
+                                </ul>
+                                <p style="margin-top: 30px; text-align: left; color: #6c757d; font-style: italic; font-weight: 500;">Click on the navigation tabs above to explore each project in detail.</p>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="sonarLayout.PNG" alt="Featured Project - Sonar PCB Layout">
+                                <div class="image-caption">Featured Project - Sonar PCB Layout</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CMOS Imager -->
+            <div id="cmos" class="content-section">
+                <div class="project-detail">
+                    <button class="back-btn" onclick="showSection('projects')">← Back to Projects</button>
+                    <div class="project-header">
+                        <h1>CMOS Imager</h1>
+                    </div>
+                    
+                    <div class="project-content">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">System uses Cadence Virtuoso to design and simulate a 24 x 24 pixel sensor array through modular design from individual transistors. The design includes a complete 3 Transistor Active Pixel Sensor (3T APS) enabling pixel reset and column read out with optimized timing design.</li>
+                                    <li style="margin-bottom: 30px;">The architecture features CMOS-based D-latch circuits as building blocks for the shift register architecture. These circuits form the foundation for the digital control system that manages pixel addressing and data readout operations.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="3T APS Layout.PNG" alt="3T APS Layout">
+                                <div class="image-caption">3 Transistor Active Pixel Sensor Layout</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content-grid" style="margin-top: 40px; border-top: 1px solid #e9ecef; padding-top: 40px;">
+                            <div class="project-image-main">
+                                <img src="C2MOS DLatch Circuit.png" alt="D-Latch Circuit">
+                                <div class="image-caption">CMOS D-Latch Circuit Design</div>
+                            </div>
+                            <div class="project-text">
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">The system includes a 4-bit shift register by cascading four D latches sequentially, verified through simulation showing proper pulse propagation. The complete system includes a 24 x 24 pixel array controlled by three sets of 4 column shift registers for linear raster scan functionality.</li>
+                                    <li style="margin-bottom: 30px;">The final design achieves row reset signal control, current driving for entire rows, and column selection for individual pixel access. The system demonstrates full integration of analog sensing elements with digital control circuitry for complete image capture functionality.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content-grid" style="margin-top: 40px; border-top: 1px solid #e9ecef; padding-top: 40px;">
+                            <div class="project-image-main">
+                                <img src="Final Deadass.png" alt="Final Array Layout">
+                                <div class="image-caption">Shift Register and Column Select Signals</div>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="atpsSchematic.png" alt="APS Schematic">
+                                <div class="image-caption">Active Pixel Sensor Schematic Design</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content-grid" style="margin-top: 40px; border-top: 1px solid #e9ecef; padding-top: 40px;">
+                            <div class="project-text">
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">The complete imaging system demonstrates successful integration of analog pixel sensors with digital control circuitry. Simulation results validate the design functionality including proper timing sequences, signal integrity, and array addressing capabilities for the 4x4 prototype implementation.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="CMOS4x4.png" alt="4x4 Grid Simulation">
+                                <div class="image-caption">4x4 Pixel Array Simulation Results</div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <button onclick="openPDF('Design Day Poster (1).pdf', 'Design Day Poster')" class="pdf-button">📄 View Design Day Poster</button>
+                            
+                            <!-- Embedded PDF Viewer -->
+                            <div style="margin-top: 30px;">
+                                <h4 style="color: #1a365d; margin-bottom: 15px; font-size: 22px;">Design Day Poster Preview</h4>
+                                <iframe src="Design Day Poster (1).pdf" class="embedded-pdf" title="Design Day Poster"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sonar Ranging PCB -->
+            <div id="sonar" class="content-section">
+                <div class="project-detail">
+                    <button class="back-btn" onclick="showSection('projects')">← Back to Projects</button>
+                    <div class="project-header">
+                        <h1>Ultrasonic Sonar Ranging System </h1>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <ul>
+                                    <li>System provides precision distance measurement using time-of-flight principles with 40 kHz ping signal transmission via TX/RX transducer architecture for optimal acoustic performance with minimal interference.</li>
+                                    <li>The design features clean signal generation using dedicated waveform IC producing high-resolution 40 kHz sine waves. AC-coupled amplification stage uses non-inverting op-amp configuration for transducer driving with optimal power delivery.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="sonarLayout.PNG" alt="Sonar PCB Layout">
+                                <div class="image-caption">Sonar PCB Layout Design</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content-grid" style="margin-top: 40px; border-top: 1px solid #e9ecef; padding-top: 40px;">
+                            <div class="project-image-main">
+                                <img src="sonarSketch.jpg" alt="Sonar System Design Sketch">
+                                <div class="image-caption">System Architecture Design Sketch</div>
+                            </div>
+                            <div class="project-text">
+                                <ul>
+                                    <li>The receiving system features wide dynamic range with PID-based feedback control for detecting distant objects. Variable gain amplifier IC provides dynamic gain adjustment to compensate for exponential sound pressure decay over distance.</li>
+                                    <li>System integration includes 12-bit ADC for signal digitization and I2C communication with ESP32 microcontroller. The complete system provides real-time distance measurements with sub-centimeter accuracy across a wide operational range.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-images">
+                            <h4>System Design & Implementation</h4>
+                            <div class="project-images">
+                                <div class="project-image">
+                                    <img src="sonarSchematic[21].PNG" alt="Sonar Schematic">
+                                    <div class="project-image-caption">Complete Sonar System Schematic</div>
+                                </div>
+                                <div class="project-image">
+                                    <img src="sonar3d.PNG" alt="3D PCB View">
+                                    <div class="project-image-caption">3D PCB Visualization</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- H-Bridge Driver -->
+            <div id="hbridge" class="content-section">
+                <div class="project-detail">
+                    <button class="back-btn" onclick="showSection('projects')">← Back to Projects</button>
+                    <div class="project-header">
+                        <h1>H-Bridge Driver PCB</h1>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <ul>
+                                    <li>The design features high-performance H-bridge driver IC with 20 kHz switching frequency capability. System handles 5A current loads at 12V for robust motor control applications with excellent thermal performance.</li>
+                                    <li>Circuit optimization enables fast 2-wheel to 4-wheel drive switching in automotive applications. The design uses DRV8873 specialized automotive driver IC for its compact form factor and flexible operation modes.</li>
+                                    <li>Performance specifications comfortably exceed design requirements. The system includes comprehensive thermal management and protection features including overcurrent protection for reliable operation.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="hBridgeReal.png" alt="Physical PCB">
+                                <div class="image-caption">Fabricated H-Bridge PCB</div>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-images">
+                            <h4>Design Schematics</h4>
+                            <div class="project-images">
+                                <div class="project-image">
+                                    <img src="hBridgeschem.png" alt="H-Bridge Schematic">
+                                    <div class="project-image-caption">H-Bridge Driver Schematic</div>
+                                </div>
+                                <div class="project-image">
+                                    <img src="hBridgeLayout.png" alt="H-Bridge Layout">
+                                    <div class="project-image-caption">PCB Layout Design</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DTMF System -->
+            <div id="dtmf" class="content-section">
+                <div class="project-detail">
+                    <button class="back-btn" onclick="showSection('projects')">← Back to Projects</button>
+                    <div class="project-header">
+                        <h1>DTMF Signal Processing System</h1>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <ul>
+                                    <li>System includes comprehensive MATLAB scripts for encoding numeric passcodes into Dual Tone Multi Frequency (DTMF) signal waveforms. The frequency mapping system maps each digit to specific pairs of frequencies according to DTMF standards.</li>
+                                    <li>DTMF decoder processes noisy input signals through advanced signal processing techniques. The system utilizes filtering, energy shifting, and Fourier analysis for accurate frequency extraction from incoming signals.</li>
+                                    <li>Digit string processing capability handles continuous multi-digit sequences. Automatic signal splitting algorithm isolates individual digits from continuous streams with high accuracy and noise immunity.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="dtmf.png" alt="DTMF Frequency Chart">
+                                <div class="image-caption">DTMF Frequency Mapping Table</div>
+                            </div>
+                        </div>
+                        
+                        <!-- dtmfFlowchart.png is 2.6 ratio - wide, display full width -->
+                        <div class="additional-images">
+                            <h4>Signal Processing Implementation</h4>
+                            <div class="wide-image-section">
+                                <img src="dtmfFlowchart.png" alt="DTMF Processing Flowchart">
+                                <div class="wide-image-caption">Signal Processing Flowchart</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C++ Projects -->
+            <div id="cpp" class="content-section">
+                <div class="project-detail">
+                    <button class="back-btn" onclick="showSection('projects')">← Back to Projects</button>
+                    <div class="project-header">
+                        <h1>C/C++ Projects</h1>
+                    </div>
+                    
+                    <!-- Combined Image Processing Project -->
+                    <div class="project-content" style="margin-bottom: 40px;">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <h3>Pseudo Photoshop </h3>
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">Image manipulation software processes .ppm files with multiple algorithms including convolution-based blurring, precision cropping with coordinate selection, and RGB channel-based grayscaling. The software handles pixel-level operations for color space transformations.</li>
+                                    <li style="margin-bottom: 30px;">System includes color space transformations with binary thresholding, complete color inversion, pointillism effects, and zoom-out functionality through direct pixel manipulation. The program processes .ppm image format while maintaining data integrity across different processing operations.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <div style="display: flex; flex-direction: column; gap: 20px; max-width: 100%;">
+                                    <div class="project-image">
+                                        <img src="kitten.png" alt="Original Image" style="width: 100%; height: auto;">
+                                        <div class="project-image-caption">Original Image</div>
+                                    </div>
+                                    <div class="project-image">
+                                        <img src="kitten-point.png" alt="Processing Effect" style="width: 100%; height: auto;">
+                                        <div class="project-image-caption">Blur Processing Effect</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content-grid" style="margin-top: 40px; border-top: 1px solid #e9ecef; padding-top: 40px;">
+                            <div class="project-image-main">
+                                <img src="kitten_binary.png" alt="Binary Conversion">
+                                <div class="image-caption">Binary Image Conversion Result</div>
+                            </div>
+                            <div class="project-text">
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">The image processing system supports invert colors, blur, zoom-out, binarize, pointillism, and crop operations on .ppm file format. Processing operations utilize memory management protocols for consistent performance.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content-grid" style="margin-top: 40px; border-top: 1px solid #e9ecef; padding-top: 40px;">
+                            <div class="project-text" style="display: flex; align-items: center; justify-content: center;">
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">Testing framework validates processing operations across different input conditions. The modular code structure allows for addition of new algorithms and filter implementations while maintaining consistent performance.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="kitten-invert.png" alt="Color Inverted">
+                                <div class="image-caption">Color Inversion Processing Result</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chess Game Project -->
+                    <div class="project-content">
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <h3>Chess Game Engine</h3>
+                                <ul style="margin-bottom: 0;">
+                                    <li style="margin-bottom: 30px;">Chess game implementation in C++ includes full rule validation with castling, en passant, and pawn promotion mechanics. The move validation system checks legal moves for each piece type and handles edge cases.</li>
+                                    <li style="margin-bottom: 30px;">Game state detection identifies checkmate and stalemate conditions through recursive board analysis. The terminal interface displays the board state and processes move input.</li>
+                                    <li style="margin-bottom: 30px;">Board representation uses efficient data structures for game state management. The system handles invalid move detection with appropriate error responses.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="chess.png" alt="Chess Game Interface">
+                                <div class="image-caption">Terminal-Based Chess Game Interface</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ECG Circuit -->
+            <div id="ecg" class="content-section">
+                <div class="project-detail">
+                    <button class="back-btn" onclick="showSection('projects')">← Back to Projects</button>
+                    <div class="project-header">
+                        <h1>ECG Circuit Design</h1>
+                    </div>
+                    <div class="project-content">
+                        <!-- ECGschematic.png is 2.44 ratio - wide, display full width at top -->
+                        <div class="wide-image-section">
+                            <img src="ECGschematic.png" alt="ECG Schematic">
+                            <div class="wide-image-caption">Complete ECG Circuit Schematic in LTSpice</div>
+                        </div>
+                        
+                        <div class="project-content-grid">
+                            <div class="project-text">
+                                <ul>
+                                    <li>Circuit captures and filters ECG signals from wrist electrodes with signal visualization system providing plotting capabilities for analyzing cardiac electrical activity patterns.</li>
+                                    <li>The 4-stage signal processing system optimizes biomedical signal acquisition with band-pass filter stage for initial signal conditioning and noise reduction with precise frequency response characteristics.</li>
+                                    <li>Instrumentation amplifier stage provides high-gain, low-noise signal amplification. System includes notch filter to eliminate 60Hz power line interference and final amplification stage to achieve optimal signal levels for display and analysis.</li>
+                                </ul>
+                            </div>
+                            <div class="project-image-main">
+                                <img src="bodeplotECG.png" alt="ECG Bode Plot">
+                                <div class="image-caption">ECG Circuit Frequency Response Analysis</div>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-images">
+                            <h4>Circuit Implementation & Results</h4>
+                            <div class="project-images">
+                                <div class="project-image">
+                                    <img src="ECGrealPic.png" alt="ECG Breadboard Circuit">
+                                    <div class="project-image-caption">Breadboarded ECG Circuit Implementation</div>
+                                </div>
+                                <div class="project-image" style="display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="ECGplot.jpg" alt="ECG Signal Output">
+                                    <div class="project-image-caption">Actual ECG Signal from Oscilloscope</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>CV</h3>
+                    <p><a href="resumeJacoboTello2025.pdf" class="social-link">Download Resume</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>GitHub</h3>
+                    <p><a href="https://github.com/jacobotellop" class="social-link">github.com/jacobotellop</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="pdf-modal">
+        <div class="pdf-container">
+            <button class="pdf-close" onclick="closePDF()">&times;</button>
+            <div id="pdfTitle" class="pdf-title"></div>
+            <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
+        </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-text">Portfolio</span>
-            </a>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to corresponding nav button
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const buttonMap = {
+                'about': 0,
+                'research': 1,
+                'projects': 2,
+                'contact': 3
+            };
+            
+            if (buttonMap.hasOwnProperty(sectionId)) {
+                navButtons[buttonMap[sectionId]].classList.add('active');
+            }
+        }
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-text" data-aos="fade-up">
-                <h1 class="hero-title">
-                    Hi, I'm <span class="gradient-text">Your Name</span>
-                </h1>
-                <p class="hero-subtitle">Full Stack Developer & UI/UX Designer</p>
-                <p class="hero-description">
-                    I create beautiful, functional websites and applications that solve real-world problems.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-briefcase"></i> View Projects
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Contact Me
-                    </a>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image" data-aos="fade-left">
-                <div class="hero-image-wrapper">
-                    <img src="https://via.placeholder.com/500x500" alt="Profile Picture">
-                    <div class="hero-image-bg"></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#about">
-                <div class="mouse"></div>
-            </a>
-        </div>
-    </section>
+        function showProject(projectId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected project
+            document.getElementById(projectId).classList.add('active');
+        }
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="about-content">
-                <div class="about-text" data-aos="fade-right">
-                    <p class="about-description">
-                        I'm a passionate full-stack developer with a keen eye for design. 
-                        I love creating digital experiences that are not only beautiful but also functional and user-friendly.
-                    </p>
-                    <p class="about-description">
-                        With expertise in modern web technologies, I bring ideas to life through clean code and thoughtful design.
-                    </p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>New York, USA</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>your.email@example.com</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Education</h4>
-                                <p>Computer Science Degree</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <h4>Experience</h4>
-                                <p>3+ Years</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary" data-aos="fade-up">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
-                </div>
-                <div class="about-image" data-aos="fade-left">
-                    <img src="https://via.placeholder.com/400x500" alt="About Me">
-                </div>
-            </div>
-        </div>
-    </section>
+        function openPDF(pdfUrl, title) {
+            const modal = document.getElementById('pdfModal');
+            const viewer = document.getElementById('pdfViewer');
+            const titleDiv = document.getElementById('pdfTitle');
+            
+            titleDiv.textContent = title;
+            viewer.src = pdfUrl;
+            modal.classList.add('active');
+            
+            // Prevent body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
+        }
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">My Skills</h2>
-            <div class="skills-categories">
-                <!-- Frontend Skills -->
-                <div class="skill-category" data-aos="fade-up">
-                    <h3 class="category-title">Frontend Development</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <h4>HTML5</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <h4>CSS3</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js"></i>
-                            <h4>JavaScript</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <h4>React</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        function closePDF() {
+            const modal = document.getElementById('pdfModal');
+            const viewer = document.getElementById('pdfViewer');
+            
+            modal.classList.remove('active');
+            viewer.src = '';
+            
+            // Restore body scrolling
+            document.body.style.overflow = 'auto';
+        }
 
-                <!-- Backend Skills -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">Backend Development</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <h4>Node.js</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <h4>Python</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <h4>MongoDB</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-server"></i>
-                            <h4>Express.js</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        // Close modal when clicking outside the PDF container
+        document.getElementById('pdfModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePDF();
+            }
+        });
 
-                <!-- Tools -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="category-title">Tools & Technologies</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <h4>Git</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-docker"></i>
-                            <h4>Docker</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-figma"></i>
-                            <h4>Figma</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-terminal"></i>
-                            <h4>Command Line</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">My Projects</h2>
-            <div class="filter-buttons" data-aos="fade-up">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web" data-aos="fade-up">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 1">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution built with React and Node.js</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card" data-category="mobile" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 2">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Task Manager App</h3>
-                        <p>A mobile-first task management application with real-time sync</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 3">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Social Media Dashboard</h3>
-                        <p>Analytics dashboard for social media management</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Chart.I'll create a complete, modern, interactive portfolio website for you. Here are all the files you need:
-
-## 📁 File Structure
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePDF();
+            }
+        });
+    </script>
+</body>
+</html>
