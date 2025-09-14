@@ -161,11 +161,10 @@ d<!DOCTYPE html>
             box-shadow: var(--shadow);
         }
 
-        /* Hero Section */
-        /* Hero Section */
+/* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 2rem 0; /* Much smaller padding */
+            padding: 2rem 0;
             background: linear-gradient(135deg, var(--jhu-blue) 0%, var(--jhu-blue-light) 100%);
             position: relative;
             overflow: hidden;
@@ -182,21 +181,33 @@ d<!DOCTYPE html>
             animation: float 20s infinite ease-in-out;
         }
         
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center; /* This ensures centering */
+        }
+        
         .hero h1 {
-            font-size: 2.2rem; /* Smaller font */
+            font-size: 2.2rem;
             font-weight: 800;
-            color: white; /* White text */
+            color: white;
             margin-bottom: 0.3rem;
             animation: fadeInUp 0.8s ease;
         }
         
         .hero-subtitle {
-            font-size: 1.1rem; /* Smaller subtitle */
-            color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 0;
             animation: fadeInUp 0.8s ease 0.2s both;
         }
-
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -207,6 +218,8 @@ d<!DOCTYPE html>
                 transform: translateY(0);
             }
         }
+
+
 
         /* About Section */
         .about {
