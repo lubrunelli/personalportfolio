@@ -162,14 +162,15 @@ d<!DOCTYPE html>
         }
 
         /* Hero Section */
+        /* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem 0; /* Much smaller padding */
+            background: linear-gradient(135deg, var(--jhu-blue) 0%, var(--jhu-blue-light) 100%);
             position: relative;
             overflow: hidden;
         }
-
+        
         .hero::before {
             content: '';
             position: absolute;
@@ -177,63 +178,23 @@ d<!DOCTYPE html>
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0, 45, 114, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: float 20s infinite ease-in-out;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
+        
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.2rem; /* Smaller font */
             font-weight: 800;
-            color: var(--jhu-blue);
-            margin-bottom: 1rem;
+            color: white; /* White text */
+            margin-bottom: 0.3rem;
             animation: fadeInUp 0.8s ease;
         }
-
+        
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+            font-size: 1.1rem; /* Smaller subtitle */
+            color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            margin-bottom: 0;
             animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero-paths {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .path-btn {
-            padding: 0.75rem 2rem;
-            border: 2px solid var(--jhu-blue);
-            background: transparent;
-            color: var(--jhu-blue);
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .path-btn:hover,
-        .path-btn.active {
-            background: var(--jhu-blue);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
         }
 
         @keyframes fadeInUp {
@@ -1136,8 +1097,6 @@ d<!DOCTYPE html>
         <div class="container">
             <p>&copy; 2025 Luiza Brunelli. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
                 <a href="#" id="footerResumeLink">Download Resume</a>
             </div>
         </div>
